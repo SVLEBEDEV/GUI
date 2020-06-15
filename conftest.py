@@ -2,6 +2,7 @@ import pytest
 from fixture.application import Application
 from comtypes.client import CreateObject
 import os
+from model.group import Group
 
 
 @pytest.fixture(scope='session')
@@ -26,10 +27,7 @@ def load_from_excel():
     i = 1
     list_group = []
     while xl.Range["A%s" % i].Value() is not None:
-        list_group.append(xl.Range["A%s" % i].Value())
+        list_group.append(Group(name=xl.Range["A%s" % i].Value()))
         i += 1
     xl.Quit()
     return list_group
-
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/%s.json' % file)) as f:
-        return jsonpickle.decode(f.read())
