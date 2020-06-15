@@ -22,7 +22,7 @@ def pytest_generate_tests(metafunc):
 def load_from_excel():
     project_dir = os.path.dirname(os.path.realpath(__file__)) + '\\groups.xlsx'
     xl = CreateObject("Excel.Application")
-    xl.Visible = 1
+    xl.Visible = 0
     wb = xl.Workbooks.open(project_dir)
     i = 1
     list_group = []
